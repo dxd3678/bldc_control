@@ -55,7 +55,7 @@ void app_init(void)
 
 void R3_I_callback(struct __DMA_HandleTypeDef *hdma)
 {
-	rtU.theta += 0.20;
+	rtU.theta += 0.005;
 	Theta_add += 0.01;
 	if(rtU.theta >= 2.0f * PI)
 	{
@@ -65,24 +65,7 @@ void R3_I_callback(struct __DMA_HandleTypeDef *hdma)
 	htim1.Instance->CCR1 = (uint16_t)rtY.Tcmp3;
 	htim1.Instance->CCR2 = (uint16_t)rtY.Tcmp2;
 	htim1.Instance->CCR3 = (uint16_t)rtY.Tcmp1;
-//	
-//	if(count>3000)
-//	{
-//		count=count;
-//	}
-//	else 
-//	{
-//		count++;
-//	}
-	printf("%d,%d,%d,%.1f\r\n",adc1_val_buf1[1],adc1_val_buf1[2],adc1_val_buf1[3],rtU.theta*100);
-//	if(Theta_add > 28* PI)
-//			{
-//				HAL_GPIO_WritePin(GPIOB,GPIO_PIN_13/GPIO_PIN_14/GPIO_PIN_15,GPIO_PIN_RESET);
-//				HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_4);
-//				HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_3);
-//				HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_4);
-//				HAL_TIM_PWM_Stop(&htim1, TIM_CHANNEL_1);
-//			}
+
 }
 
 int fputc(int c,FILE *f)
