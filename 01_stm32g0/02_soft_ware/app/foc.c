@@ -52,17 +52,17 @@ void foc_step(void)
   /* Outport: '<Root>/Tcmp1' incorporates:
    *  MATLAB Function: '<S1>/SVPWM MATLAB Function'
    */
-  rtY.Tcmp1 = 0.0f;
+  // rtY.Tcmp1 = 0.0f;
 
   /* Outport: '<Root>/Tcmp2' incorporates:
    *  MATLAB Function: '<S1>/SVPWM MATLAB Function'
    */
-  rtY.Tcmp2 = 0.0f;
+  // rtY.Tcmp2 = 0.0f;
 
   /* Outport: '<Root>/Tcmp3' incorporates:
    *  MATLAB Function: '<S1>/SVPWM MATLAB Function'
    */
-  rtY.Tcmp3 = 0.0f;
+  // rtY.Tcmp3 = 0.0f;
 
   /* MATLAB Function: '<S1>/SVPWM MATLAB Function' incorporates:
    *  Inport: '<Root>/Tpwm'
