@@ -1,4 +1,7 @@
+#include <math.h>
 #include "Kalman.h"
+
+
 Slid_t Current_a,Current_b,Filter_shaft_velocity,Filter_ret_q;
 Slid_t Slid_velocity;
 KalMan_t KalMan_current_Iq;	

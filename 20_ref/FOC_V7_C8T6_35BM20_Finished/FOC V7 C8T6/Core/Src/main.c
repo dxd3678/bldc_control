@@ -28,6 +28,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 #include "MagneticSensor.h" 
 #include "FOCMotor.h"
 #include "BLDCmotor.h"
