@@ -21,7 +21,7 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,7 +51,19 @@ TIM_HandleTypeDef htim3;
 UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
+int fputc(int ch, FILE* f)
+{
+	if (ch == '\n')
+	{
+		/* HAL_UART_Transmit 传入的数据buffer地址，所以需要使用临时变量接�? */
+		int tmp = '\r';
+		HAL_UART_Transmit(&huart1, (uint8_t*)&tmp, 1, 0xfff);
+	}
 
+	HAL_UART_Transmit(&huart1,(uint8_t*)&ch,1,0xfff);
+
+	return (ch);
+}
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -69,7 +81,7 @@ static void MX_USART1_UART_Init(void);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-
+#include "nr_micro_shell.h"
 /* USER CODE END 0 */
 
 /**
@@ -109,6 +121,18 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
 
+	printf("hello world \n");
+	unsigned int i = 0;
+
+	char test_line[] = "test 1 2 3\n";
+	/* 初始 shell */
+	shell_init();
+
+	/* 初步测试代码 */
+	for(i = 0; i < sizeof(test_line)-1; i++)
+	{
+		shell(test_line[i]);
+	}
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -435,7 +459,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 1152000;
+  huart1.Init.BaudRate = 115200;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_NONE;
